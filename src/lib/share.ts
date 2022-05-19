@@ -1,4 +1,4 @@
-import { getGuessStatuses } from './statuses'
+import { getGuessStatuses, getGuessHighLowStatus } from './statuses'
 import { unicodeSplit } from './words'
 import { GAME_TITLE } from '../constants/strings'
 import { MAX_CHALLENGES } from '../constants/settings'
@@ -57,6 +57,7 @@ export const generateEmojiGrid = (
     .map((guess) => {
       const status = getGuessStatuses(solution, guess)
       const splitGuess = unicodeSplit(guess)
+      const highLowEmoji = toHighLowEmoji(solution, guess)
 
       return splitGuess
         .map((_, i) => {
@@ -70,6 +71,7 @@ export const generateEmojiGrid = (
           }
         })
         .join('')
+        + ' ' + highLowEmoji
     })
     .join('\n')
 }
@@ -91,4 +93,16 @@ export const getEmojiTiles = (isDarkMode: boolean, isHighContrastMode: boolean) 
   tiles.push(isHighContrastMode ? '🟦' : '🟨')
   tiles.push(isDarkMode ? '⬛' : '⬜')
   return tiles
+}
+
+const toHighLowEmoji = (solution: string, guess: string) => {
+  const highLow = getGuessHighLowStatus(guess, solution)
+  switch (highLow) {
+    case 'high':
+      return '⬇️'
+    case 'low':
+      return '⬆️'
+    case 'equal':
+      return '🎯'
+  }
 }

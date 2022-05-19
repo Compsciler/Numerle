@@ -18,20 +18,20 @@ export const StrengthDisplay = ({ strength }: Props) => {
         return 'EQUAL'
       }
       case 'waiting': {
-        return (
-          <img
-            src={balance}
-            alt="balance.svg"
-            width="60%"
-            style={{ display: 'inline' }}
-          />
-        )
+        return 'WAITING'
       }
       default: {
         return ''
       }
     }
   })()
+  if (display === 'WAITING') {
+    return (
+      <div>
+        ?
+      </div>
+    )
+  }
   return (
     <div
       className="text-black text-center text-sm"

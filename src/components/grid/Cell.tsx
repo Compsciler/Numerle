@@ -42,13 +42,13 @@ export const Cell = ({
         status === 'correct' && !isHighContrast,
       'present shadowed bg-yellow-500 text-white border-yellow-500':
         status === 'present' && !isHighContrast,
-        'high bg-red-400 text-white border-red-500 dark:bg-red-400 dark:border-red-500':
+      'high bg-red-400 text-white border-red-500 dark:bg-red-400 dark:border-red-500':
         target === 'strength' && status === 'high',
       'low bg-blue-400 text-white border-blue-500 dark:bg-blue-400 dark:border-blue-500':
         target === 'strength' && status === 'low',
-      'hit bg-lime-400 text-white text-white border-lime-500 dark:bg-lime-400 dark:border-lime-500':
+      'equal bg-lime-400 text-white text-white border-lime-500 dark:bg-lime-400 dark:border-lime-500':
         target === 'strength' && status === 'equal',
-      'waiting border-black dark:bg-neutral-300 dark:border-neutral-300':
+      'waiting border-black dark:border-neutral-300':
         target === 'strength' && status === 'waiting',
       'cell-fill-animation': isFilled,
       'cell-reveal': shouldReveal,
