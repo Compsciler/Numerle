@@ -1,14 +1,16 @@
-import { CharStatus } from '../../lib/statuses'
+import { CharStatus, HandStatus } from '../../lib/statuses'
 import classnames from 'classnames'
 import { REVEAL_TIME_MS } from '../../constants/settings'
 import { getStoredIsHighContrastMode } from '../../lib/localStorage'
+import { StrengthDisplay } from '../strengthDisplay/StrengthDisplay'
 
 type Props = {
   value?: string
-  status?: CharStatus
+  status?: CharStatus | HandStatus
   isRevealing?: boolean
   isCompleted?: boolean
   position?: number
+  target?: 'char' | 'strength'
 }
 
 export const Cell = ({
@@ -17,6 +19,7 @@ export const Cell = ({
   isRevealing,
   isCompleted,
   position = 0,
+  target = 'char'
 }: Props) => {
   const isFilled = value && !isCompleted
   const shouldReveal = isRevealing && isCompleted
@@ -39,6 +42,14 @@ export const Cell = ({
         status === 'correct' && !isHighContrast,
       'present shadowed bg-yellow-500 text-white border-yellow-500':
         status === 'present' && !isHighContrast,
+        'high bg-red-400 text-white border-red-500 dark:bg-red-400 dark:border-red-500':
+        target === 'strength' && status === 'high',
+      'low bg-blue-400 text-white border-blue-500 dark:bg-blue-400 dark:border-blue-500':
+        target === 'strength' && status === 'low',
+      'hit bg-lime-400 text-white text-white border-lime-500 dark:bg-lime-400 dark:border-lime-500':
+        target === 'strength' && status === 'equal',
+      'waiting border-black dark:bg-neutral-300 dark:border-neutral-300':
+        target === 'strength' && status === 'waiting',
       'cell-fill-animation': isFilled,
       'cell-reveal': shouldReveal,
     }
@@ -47,7 +58,13 @@ export const Cell = ({
   return (
     <div className={classes} style={{ animationDelay }}>
       <div className="letter-container" style={{ animationDelay }}>
-        {value}
+        {target === 'char' ? (
+          value
+        ) : (
+          <StrengthDisplay
+            strength={isRevealing ? 'waiting' : (status as HandStatus)}
+          />
+        )}
       </div>
     </div>
   )

@@ -1,6 +1,7 @@
 import { unicodeSplit } from './words'
 
 export type CharStatus = 'absent' | 'present' | 'correct'
+export type HandStatus = 'high' | 'low' | 'equal' | 'waiting'
 
 export const getStatuses = (
   solution: string,
@@ -76,4 +77,15 @@ export const getGuessStatuses = (
   })
 
   return statuses
+}
+
+export const getGuessHighLowStatus = (guess: string, solution: string) => {
+  const guessNum = Number(guess)
+  const solutionNum = Number(solution)
+  if (guessNum === solutionNum) {
+    return 'equal'
+  } else if (guessNum < solutionNum) {
+    return 'low'
+  }
+  return 'high'
 }

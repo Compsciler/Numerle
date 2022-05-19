@@ -19,6 +19,11 @@ export const CurrentRow = ({ guess, className }: Props) => {
       {emptyCells.map((_, i) => (
         <Cell key={i} />
       ))}
+      <div className="ml-2" />
+      <Cell
+        target="strength"
+        status={emptyCells.length === 0 ? 'waiting' : undefined}
+      />
     </div>
   )
 }
