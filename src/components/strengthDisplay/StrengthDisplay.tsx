@@ -1,5 +1,4 @@
 import { HandStatus } from '../../lib/statuses'
-import balance from './balance.svg'
 
 type Props = {
   strength: HandStatus

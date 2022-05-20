@@ -48,7 +48,7 @@ export const Cell = ({
         target === 'strength' && status === 'low',
       'equal bg-lime-400 text-white text-white border-lime-500 dark:bg-lime-400 dark:border-lime-500':
         target === 'strength' && status === 'equal',
-      'waiting border-black dark:border-neutral-300':
+      'waiting border-black dark:bg-slate-900 dark:border-neutral-300':
         target === 'strength' && status === 'waiting',
       'cell-fill-animation': isFilled,
       'cell-reveal': shouldReveal,
