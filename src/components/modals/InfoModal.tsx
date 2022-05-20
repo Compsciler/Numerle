@@ -10,8 +10,8 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
   return (
     <BaseModal title="How to play" isOpen={isOpen} handleClose={handleClose}>
       <p className="text-sm text-gray-500 dark:text-gray-300">
-        Guess the number in 6 tries. After each guess, the color of the tiles will
-        change to show how close your guess was to the word.
+        Guess the number (00000-99999) in 6 tries. After each guess, the color of the tiles will
+        change to show how close your guess was to the number.
       </p>
       <p className="text-sm text-gray-500 dark:text-gray-300">
         <strong>Playing on Hard Mode is recommended. </strong>
