@@ -25,6 +25,7 @@ import {
   isWinningWordOfDay,
   solution as solutionOfDay,
   findFirstUnusedReveal,
+  isGuessOutsideHighLowRange,
   unicodeLength,
   solutionIndex as solutionIndexOfDay,
 } from './lib/words'
@@ -270,6 +271,18 @@ function App() {
       if (firstMissingReveal) {
         setCurrentRowClass('jiggle')
         return showErrorAlert(firstMissingReveal, {
+          onClose: clearCurrentRowClass,
+        })
+      }
+
+      const isCurrentGuessOutsideHighLowRange = isGuessOutsideHighLowRange(
+        currentGuess,
+        guesses,
+        solution
+      )
+      if (isCurrentGuessOutsideHighLowRange) {
+        setCurrentRowClass('jiggle')
+        return showErrorAlert(isCurrentGuessOutsideHighLowRange, {
           onClose: clearCurrentRowClass,
         })
       }

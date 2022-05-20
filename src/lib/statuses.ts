@@ -82,10 +82,10 @@ export const getGuessStatuses = (
 export const getGuessHighLowStatus = (guess: string, solution: string) => {
   const guessNum = Number(guess)
   const solutionNum = Number(solution)
-  if (guessNum === solutionNum) {
-    return 'equal'
-  } else if (guessNum < solutionNum) {
+  if (guessNum < solutionNum) {
     return 'low'
+  } else if (guessNum > solutionNum) {
+    return 'high'
   }
-  return 'high'
+  return 'equal'
 }

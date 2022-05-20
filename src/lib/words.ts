@@ -1,5 +1,5 @@
 import { WORDS } from '../constants/wordlist'
-import { WRONG_SPOT_MESSAGE, NOT_CONTAINED_MESSAGE } from '../constants/strings'
+import { WRONG_SPOT_MESSAGE, NOT_CONTAINED_MESSAGE, TOO_LOW_MESSAGE, TOO_HIGH_MESSAGE } from '../constants/strings'
 import { getGuessStatuses } from './statuses'
 import { default as GraphemeSplitter } from 'grapheme-splitter'
 import { isValidKey } from '../components/keyboard/Keyboard'
@@ -58,6 +58,31 @@ export const findFirstUnusedReveal = (word: string, guesses: string[], solution:
 
   if (lettersLeftArray.length > 0) {
     return NOT_CONTAINED_MESSAGE(lettersLeftArray[0])
+  }
+  return false
+}
+
+export const isGuessOutsideHighLowRange = (guess: string, guesses: string[], solution: string) => {
+  const guessNum = Number(guess)
+  const guessesNums = guesses.map(Number)
+  const solutionNum = Number(solution)
+
+  let range_min = Number.NEGATIVE_INFINITY
+  let range_max = Number.POSITIVE_INFINITY
+
+  guessesNums.forEach(guess_ => {
+    if (guess_ < solutionNum) {
+      range_min = Math.max(guess_, range_min)
+    } else if (guess_ > solutionNum) {
+      range_max = Math.min(guess_, range_max)
+    }
+  })
+
+  if (guessNum <= range_min) {
+    return TOO_LOW_MESSAGE(range_min)
+  }
+  if (guessNum >= range_max) {
+    return TOO_HIGH_MESSAGE(range_max)
   }
   return false
 }

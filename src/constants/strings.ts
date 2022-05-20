@@ -15,6 +15,10 @@ export const WRONG_SPOT_MESSAGE = (guess: string, position: number) =>
   `Must use ${guess} in position ${position}`
 export const NOT_CONTAINED_MESSAGE = (letter: string) =>
   `Guess must contain ${letter}`
+export const TOO_LOW_MESSAGE = (range_min: number) =>
+  `Guess must be higher than ${range_min}`
+export const TOO_HIGH_MESSAGE = (range_max: number) =>
+  `Guess must be lower than ${range_max}`
 export const ENTER_TEXT = 'Enter'
 export const DELETE_TEXT = 'Delete'
 export const STATISTICS_TITLE = 'Statistics'
