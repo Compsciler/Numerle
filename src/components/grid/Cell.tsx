@@ -1,16 +1,16 @@
-import { CharStatus, HandStatus } from '../../lib/statuses'
+import { CharStatus, HighLowStatus } from '../../lib/statuses'
 import classnames from 'classnames'
 import { REVEAL_TIME_MS } from '../../constants/settings'
 import { getStoredIsHighContrastMode } from '../../lib/localStorage'
-import { StrengthDisplay } from '../strengthDisplay/StrengthDisplay'
+import { HighLowDisplay } from '../rankdisplay/RankDisplay'
 
 type Props = {
   value?: string
-  status?: CharStatus | HandStatus
+  status?: CharStatus | HighLowStatus
   isRevealing?: boolean
   isCompleted?: boolean
   position?: number
-  target?: 'char' | 'strength'
+  target?: 'char' | 'rank'
 }
 
 export const Cell = ({
@@ -43,13 +43,13 @@ export const Cell = ({
       'present shadowed bg-yellow-500 text-white border-yellow-500':
         status === 'present' && !isHighContrast,
       'high bg-red-400 text-white border-red-500 dark:bg-red-400 dark:border-red-500':
-        target === 'strength' && status === 'high',
+        target === 'rank' && status === 'high',
       'low bg-blue-400 text-white border-blue-500 dark:bg-blue-400 dark:border-blue-500':
-        target === 'strength' && status === 'low',
+        target === 'rank' && status === 'low',
       'equal bg-lime-400 text-white text-white border-lime-500 dark:bg-lime-400 dark:border-lime-500':
-        target === 'strength' && status === 'equal',
+        target === 'rank' && status === 'equal',
       'waiting border-black dark:bg-slate-900 dark:border-neutral-300':
-        target === 'strength' && status === 'waiting',
+        target === 'rank' && status === 'waiting',
       'cell-fill-animation': isFilled,
       'cell-reveal': shouldReveal,
     }
@@ -61,8 +61,8 @@ export const Cell = ({
         {target === 'char' ? (
           value
         ) : (
-          <StrengthDisplay
-            strength={isRevealing ? 'waiting' : (status as HandStatus)}
+          <HighLowDisplay
+            rank={isRevealing ? 'waiting' : (status as HighLowStatus)}
           />
         )}
       </div>

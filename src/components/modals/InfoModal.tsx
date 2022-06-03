@@ -43,7 +43,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         <Cell
           status={'low'}
           isCompleted={true}
-          target="strength"
+          target="rank"
         />
       </div>
       <p className="text-sm text-gray-500 dark:text-gray-300">
@@ -66,7 +66,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         <Cell
           status={'low'}
           isCompleted={true}
-          target="strength"
+          target="rank"
         />
       </div>
       <p className="text-sm text-gray-500 dark:text-gray-300">
@@ -84,7 +84,7 @@ export const InfoModal = ({ isOpen, handleClose }: Props) => {
         <Cell
           status={'high'}
           isCompleted={true}
-          target="strength"
+          target="rank"
         />
       </div>
       <p className="text-sm text-gray-500 dark:text-gray-300">

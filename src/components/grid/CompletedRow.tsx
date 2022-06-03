@@ -32,7 +32,7 @@ export const CompletedRow = ({ solution, guess, isRevealing }: Props) => {
         position={solution.length + 1}
         isRevealing={isRevealing}
         isCompleted
-        target="strength"
+        target="rank"
       />
     </div>
   )

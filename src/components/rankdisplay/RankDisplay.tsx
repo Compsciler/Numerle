@@ -1,12 +1,12 @@
-import { HandStatus } from '../../lib/statuses'
+import { HighLowStatus } from '../../lib/statuses'
 
 type Props = {
-  strength: HandStatus
+  rank: HighLowStatus
 }
 
-export const StrengthDisplay = ({ strength }: Props) => {
+export const HighLowDisplay = ({ rank }: Props) => {
   const display = (() => {
-    switch (strength) {
+    switch (rank) {
       case 'high': {
         return 'TOO HIGH'
       }

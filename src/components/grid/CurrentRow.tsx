@@ -21,7 +21,7 @@ export const CurrentRow = ({ guess, className }: Props) => {
       ))}
       <div className="ml-2" />
       <Cell
-        target="strength"
+        target="rank"
         status={emptyCells.length === 0 ? 'waiting' : undefined}
       />
     </div>

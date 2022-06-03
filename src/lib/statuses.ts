@@ -1,7 +1,7 @@
 import { unicodeSplit } from './words'
 
 export type CharStatus = 'absent' | 'present' | 'correct'
-export type HandStatus = 'high' | 'low' | 'equal' | 'waiting'
+export type HighLowStatus = 'high' | 'low' | 'equal' | 'waiting'
 
 export const getStatuses = (
   solution: string,

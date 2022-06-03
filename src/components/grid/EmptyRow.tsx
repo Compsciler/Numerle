@@ -10,7 +10,7 @@ export const EmptyRow = () => {
         <Cell key={i} />
       ))}
       <div className="ml-2" />
-      <Cell target="strength" />
+      <Cell target="rank" />
     </div>
   )
 }
