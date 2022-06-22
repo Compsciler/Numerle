@@ -67,22 +67,22 @@ export const isGuessOutsideHighLowRange = (guess: string, guesses: string[], sol
   const guessesNums = guesses.map(Number)
   const solutionNum = Number(solution)
 
-  let range_min = Number.NEGATIVE_INFINITY
-  let range_max = Number.POSITIVE_INFINITY
+  let rangeMin = Number.NEGATIVE_INFINITY
+  let rangeMax = Number.POSITIVE_INFINITY
 
   guessesNums.forEach(guess_ => {
     if (guess_ < solutionNum) {
-      range_min = Math.max(guess_, range_min)
+      rangeMin = Math.max(guess_, rangeMin)
     } else if (guess_ > solutionNum) {
-      range_max = Math.min(guess_, range_max)
+      rangeMax = Math.min(guess_, rangeMax)
     }
   })
 
-  if (guessNum <= range_min) {
-    return TOO_LOW_MESSAGE(range_min)
+  if (guessNum <= rangeMin) {
+    return TOO_LOW_MESSAGE(rangeMin)
   }
-  if (guessNum >= range_max) {
-    return TOO_HIGH_MESSAGE(range_max)
+  if (guessNum >= rangeMax) {
+    return TOO_HIGH_MESSAGE(rangeMax)
   }
   return false
 }
