@@ -1,5 +1,5 @@
 import axios from 'axios'
-const baseUrl = 'https://numerle.herokuapp.com/api/scores'
+const baseUrl = 'https://numerlegame.herokuapp.com/api/scores'
 
 /*
 const getAll = () => {
