@@ -49,7 +49,6 @@ export const StatsModal = ({
 }: Props) => {
   const textToShare = getTextToShare(solution, solutionIndex, guesses, isGameLost,
     isHardMode, isDarkMode, isHighContrastMode)
-  console.log(textToShare)
   
   return (
     <BaseModal
