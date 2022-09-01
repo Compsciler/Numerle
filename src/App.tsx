@@ -53,6 +53,7 @@ import { useMatch } from 'react-router-dom'
 import { getWordBySolutionIndex } from './lib/words'
 import { exampleIds } from './constants/exampleIds'
 import { HardModeText } from './components/gametext/HardModeText'
+import { PromoText } from './components/gametext/PromoText'
 
 function App() {
   const isPlayingDaily = useMatch('/') !== null
@@ -392,6 +393,14 @@ function App() {
     )
   }
 
+  const formatLink = (text: string, href: string) => {
+    return `<a href="${href}" class="underline text-blue-600 hover:text-blue-800 visited:text-purple-600" target="_blank">${text}</a>`
+  }
+
+  const youtubeLink = 'https://youtu.be/JyKkEyGwLP4'
+  const promoText = `Did you know I created 14 other Wordle variants?<br/> \
+      Find them all in this ${formatLink('YouTube video', youtubeLink)}!`
+
   return (
     <div className="h-screen flex flex-col">
       <Navbar
@@ -399,6 +408,7 @@ function App() {
         setIsStatsModalOpen={setIsStatsModalOpen}
         setIsSettingsModalOpen={setIsSettingsModalOpen}
       />
+      <PromoText text={promoText} />
       <div className="pt-2 px-1 pb-8 md:max-w-7xl w-full mx-auto sm:px-6 lg:px-8 flex flex-col grow">
         <div className="pb-6 grow">
           <HardModeText isHardMode={isHardMode} />
